@@ -15,6 +15,8 @@ public class BackendChallengeIntegrationTests {
 
     private DepositDistributionService depositDistributionService;
 
+    private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/uuuu");
+
     @Test
     void should_give_the_correct_output_for_gift_and_the_correct_user_balance_when_now_is_before_the_expiration_date() {
         // GIVEN
@@ -26,8 +28,6 @@ public class BackendChallengeIntegrationTests {
         Item item = new Gift(100L, distributionDate);
         // Todo : expiration date to calculate
         LocalDate expirationDate = LocalDate.of(2022, Month.JUNE, 14);
-        // Todo : date formatter should be into an util class or method
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/uuuu");
         // Todo : item type enum
         String itemType = "Gift";
         Company company = new Company("Tesla", 200L);
@@ -51,8 +51,6 @@ public class BackendChallengeIntegrationTests {
         Item item = new Meal(50L, distributionDate);
         // Todo : expiration date to calculate. Caution with leap years !
         LocalDate expirationDate = LocalDate.of(2021, Month.FEBRUARY, 28);
-        // Todo : date formatter should be into an util class or method
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/uuuu");
         // Todo : item type enum
         String itemType = "Meal";
         Company company = new Company("Apple", 200L);
