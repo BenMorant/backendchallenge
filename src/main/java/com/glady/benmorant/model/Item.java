@@ -10,6 +10,8 @@ public abstract class Item {
 
     private final ItemType itemType;
 
+    protected LocalDate expirationDate;
+
     public Item(long amount, LocalDate distributionDate, ItemType itemType) {
         this.amount = amount;
         this.distributionDate = distributionDate;
@@ -24,7 +26,12 @@ public abstract class Item {
         return distributionDate;
     }
 
+    public LocalDate getExpirationDate() {
+        return expirationDate;
+    }
+
     public ItemType getItemType() {
         return itemType;
     }
+
 }

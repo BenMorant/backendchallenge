@@ -24,13 +24,11 @@ public class BackendChallengeIntegrationTests {
         long newBalance = 100L;
         LocalDate distributionDate = LocalDate.of(2021, Month.JUNE, 15);
         Item item = new Gift(100L, distributionDate);
-        // Todo : expiration date to calculate
-        LocalDate expirationDate = LocalDate.of(2022, Month.JUNE, 14);
         Company company = new Company("Tesla", 200L);
         depositDistributionService = new DepositDistributionService(company, user);
         // WHEN
         depositDistributionService.distribute(item);
-        String actualOutput = user.getName() + " receives a " + item.getItemType().getName() + " distribution with the amount of $" + item.getAmount() + " from " + company.getName() + ". He will therefore have $" + newBalance + " in gift cards in his account. He received it on " + dtf.format(item.getDistributionDate()) + ". The gift distribution will expire on " + dtf.format(expirationDate) + ".";
+        String actualOutput = user.getName() + " receives a " + item.getItemType().getName() + " distribution with the amount of $" + item.getAmount() + " from " + company.getName() + ". He will therefore have $" + newBalance + " in gift cards in his account. He received it on " + dtf.format(item.getDistributionDate()) + ". The gift distribution will expire on " + dtf.format(item.getExpirationDate()) + ".";
         // THEN
         assertEquals(expectedOutput, actualOutput);
     }
