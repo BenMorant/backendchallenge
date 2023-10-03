@@ -2,15 +2,8 @@ package com.glady.benmorant.model;
 
 import java.time.LocalDate;
 
-public class Gift extends Item {
-
-
-
-    public Gift(long amount, LocalDate distributionDate) {
+public class Meal extends Item {
+    public Meal(long amount, LocalDate distributionDate) {
         super(amount, distributionDate);
     }
-
-
-
-
 }
