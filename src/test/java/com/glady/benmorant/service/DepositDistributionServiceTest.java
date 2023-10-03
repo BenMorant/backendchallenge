@@ -5,12 +5,9 @@ import com.glady.benmorant.model.Company;
 import com.glady.benmorant.model.Gift;
 import com.glady.benmorant.model.Item;
 import com.glady.benmorant.model.User;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -45,7 +42,7 @@ class DepositDistributionServiceTest {
         String expectedMessage = "Tesla has not enough balance.";
         // WHEN, THEN
         Exception exception = assertThrows(NotEnoughBalanceException.class, () -> depositDistributionService.distribute(item));
-       String actualMessage = exception.getMessage();
+        String actualMessage = exception.getMessage();
         assertTrue(actualMessage.contains(expectedMessage));
 
     }
