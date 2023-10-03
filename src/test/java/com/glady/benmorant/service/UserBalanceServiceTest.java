@@ -23,9 +23,9 @@ class UserBalanceServiceTest {
         long expectedBalance = 100L;
         userBalanceService = new UserBalanceService(john);
         // WHEN
-        long actualBalance = userBalanceService.calculateUserBalance(item);
+        userBalanceService.calculateUserBalance(item);
         // THEN
-        assertEquals(expectedBalance, actualBalance);
+        assertEquals(expectedBalance, john.getBalance());
     }
 
 

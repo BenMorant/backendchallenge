@@ -25,9 +25,9 @@ public class UserBalanceService {
         this.clock = clock;
     }
 
-    public long calculateUserBalance(Item item) {
+    public void calculateUserBalance(Item item) {
         if (item.getExpirationDate().isAfter(LocalDate.now(clock))) {
-            return user.getBalance() + item.getAmount();
+            user.setBalance(user.getBalance() + item.getAmount());
         } else {
             throw new BeyondExpirationException("This deposit is beyond expiration. The " + item.getItemType().getName() + " amount ($" + item.getAmount() + ") hasn't been counted in " + user.getName() + "'s balance.");
         }
