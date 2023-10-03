@@ -8,9 +8,12 @@ public abstract class Item {
 
     private final LocalDate distributionDate;
 
-    public Item(long amount, LocalDate distributionDate) {
+    private final ItemType itemType;
+
+    public Item(long amount, LocalDate distributionDate, ItemType itemType) {
         this.amount = amount;
         this.distributionDate = distributionDate;
+        this.itemType = itemType;
     }
 
     public long getAmount() {
@@ -19,5 +22,9 @@ public abstract class Item {
 
     public LocalDate getDistributionDate() {
         return distributionDate;
+    }
+
+    public ItemType getItemType() {
+        return itemType;
     }
 }

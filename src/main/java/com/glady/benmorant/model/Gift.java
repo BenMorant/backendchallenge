@@ -6,7 +6,7 @@ public class Gift extends Item {
 
 
     public Gift(long amount, LocalDate distributionDate) {
-        super(amount, distributionDate);
+        super(amount, distributionDate, ItemType.GIFT);
     }
 
 
