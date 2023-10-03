@@ -8,6 +8,7 @@ import com.glady.benmorant.model.User;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,10 +22,10 @@ class DepositDistributionServiceTest {
         LocalDate distributionDate = LocalDate.now();
         Item item = new Gift(100L, distributionDate);
         Company tesla = new Company("Tesla", 200L);
-        User john = new User("John", 0L);
+        User john = new User("John");
         depositDistributionService = new DepositDistributionService(tesla, john);
         // WHEN
-        depositDistributionService.distribute(item);
+        depositDistributionService.distribute(List.of(item));
         // THEN
         assertEquals(100L, john.getBalance());
         assertEquals(100L, tesla.getBalance());
@@ -37,11 +38,11 @@ class DepositDistributionServiceTest {
         LocalDate distributionDate = LocalDate.now();
         Item item = new Gift(100L, distributionDate);
         Company tesla = new Company("Tesla", 50L);
-        User john = new User("John", 0L);
+        User john = new User("John");
         depositDistributionService = new DepositDistributionService(tesla, john);
         String expectedMessage = "Tesla has not enough balance.";
         // WHEN, THEN
-        Exception exception = assertThrows(NotEnoughBalanceException.class, () -> depositDistributionService.distribute(item));
+        Exception exception = assertThrows(NotEnoughBalanceException.class, () -> depositDistributionService.distribute(List.of(item)));
         String actualMessage = exception.getMessage();
         assertTrue(actualMessage.contains(expectedMessage));
 

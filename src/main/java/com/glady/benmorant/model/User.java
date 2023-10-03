@@ -1,23 +1,26 @@
 package com.glady.benmorant.model;
 
+import java.util.List;
+
 public class User {
 
-    private String name;
+    private final String name;
 
     private long balance;
 
-    public User(String name, long balance) {
+    private List<Item> userItems;
+
+
+
+    public User(String name) {
         this.name = name;
-        this.balance = balance;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+
 
     public long getBalance() {
         return balance;
@@ -25,5 +28,13 @@ public class User {
 
     public void setBalance(long balance) {
         this.balance = balance;
+    }
+
+    public List<Item> getUserItems() {
+        return userItems;
+    }
+
+    public void setUserItems(List<Item> userItems) {
+        this.userItems = userItems;
     }
 }
