@@ -11,7 +11,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class BackendChallengeIntegrationTests {
+class BackendChallengeIntegrationTests {
 
     private final DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MM/dd/uuuu");
     private DepositDistributionService depositDistributionService;
@@ -25,8 +25,9 @@ public class BackendChallengeIntegrationTests {
         long newBalance = 100L;
         LocalDate distributionDate = LocalDate.of(2021, Month.JUNE, 15);
         Item item = new Gift(100L, distributionDate);
+        item.addUsers(List.of(user));
         Company company = new Company("Tesla", 200L);
-        depositDistributionService = new DepositDistributionService(company, user);
+        depositDistributionService = new DepositDistributionService(company);
         // WHEN
         depositDistributionService.distribute(List.of(item));
         String actualOutput = user.getName() + " receives a " + item.getItemType().getName() + " distribution with the amount of $" + item.getAmount() + " from " + company.getName() + ". He will therefore have $" + newBalance + " in gift cards in his account. He received it on " + dtf.format(item.getDistributionDate()) + ". The gift distribution will expire on " + dtf.format(item.getExpirationDate()) + ".";
@@ -44,8 +45,9 @@ public class BackendChallengeIntegrationTests {
         long expectedBalance = 50L;
         LocalDate distributionDate = LocalDate.of(2020, Month.JANUARY, 1);
         Item item = new Meal(50L, distributionDate);
+        item.addUsers(List.of(user));
         Company company = new Company("Apple", 200L);
-        depositDistributionService = new DepositDistributionService(company, user);
+        depositDistributionService = new DepositDistributionService(company);
         // WHEN
         depositDistributionService.distribute(List.of(item));
         String actualOutput = user.getName() + " receives a " + item.getItemType().getName() + " distribution from " + company.getName() + " with the amount of $" + item.getAmount() + " on " + dtf.format(item.getDistributionDate()) + ", the distribution ends on " + dtf.format(item.getExpirationDate()) + ".";
@@ -65,8 +67,10 @@ public class BackendChallengeIntegrationTests {
         long expectedBalance = 50L;
         LocalDate distributionDate = LocalDate.of(2023, Month.JANUARY, 1);
         Item item = new Meal(50L, distributionDate);
+        item.addUsers(List.of(user));
+
         Company company = new Company("Apple", 200L);
-        depositDistributionService = new DepositDistributionService(company, user);
+        depositDistributionService = new DepositDistributionService(company);
         // WHEN
         depositDistributionService.distribute(List.of(item));
         String actualOutput = user.getName() + " receives a " + item.getItemType().getName() + " distribution from " + company.getName() + " with the amount of $" + item.getAmount() + " on " + dtf.format(item.getDistributionDate()) + ", the distribution ends on " + dtf.format(item.getExpirationDate()) + ".";

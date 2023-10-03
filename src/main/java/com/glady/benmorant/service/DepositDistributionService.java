@@ -11,11 +11,11 @@ public class DepositDistributionService {
 
     private final Company company;
 
-    private final User user;
 
-    public DepositDistributionService(Company company, User user) {
+
+    public DepositDistributionService(Company company) {
         this.company = company;
-        this.user = user;
+
     }
 
     public void distribute(List<Item> items) {
@@ -23,7 +23,7 @@ public class DepositDistributionService {
             long newCompanyBalance = company.getBalance() - item.getAmount();
             if (newCompanyBalance >= 0) {
                 company.setBalance(newCompanyBalance);
-                user.setBalance(user.getBalance() + item.getAmount());
+                item.getDestinationUsers().forEach(user -> user.addItem(item));
             } else {
                 throw new NotEnoughBalanceException(company.getName() + " has not enough balance.");
             }

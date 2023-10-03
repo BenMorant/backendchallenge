@@ -2,6 +2,7 @@ package com.glady.benmorant.model;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.List;
 
 public class Meal extends Item {
     public Meal(long amount, LocalDate distributionDate) {

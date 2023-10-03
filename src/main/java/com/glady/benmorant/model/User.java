@@ -1,5 +1,6 @@
 package com.glady.benmorant.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
@@ -8,7 +9,7 @@ public class User {
 
     private long balance;
 
-    private List<Item> userItems;
+    private List<Item> userItems = new ArrayList<>();
 
 
 
@@ -36,5 +37,9 @@ public class User {
 
     public void setUserItems(List<Item> userItems) {
         this.userItems = userItems;
+    }
+
+    public void addItem(Item item) {
+        userItems.add(item);
     }
 }
