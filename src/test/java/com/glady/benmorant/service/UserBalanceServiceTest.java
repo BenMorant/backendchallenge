@@ -23,7 +23,7 @@ class UserBalanceServiceTest {
         long expectedBalance = 100L;
         userBalanceService = new UserBalanceService(john);
         // WHEN
-        userBalanceService.calculateUserBalance(item);
+        userBalanceService.calculateBalance(item);
         // THEN
         assertEquals(expectedBalance, john.getBalance());
     }
@@ -39,11 +39,12 @@ class UserBalanceServiceTest {
         userBalanceService = new UserBalanceService(john);
         String expectedMessage = "This deposit is beyond expiration. The Meal amount ($100) hasn't been counted in John's balance.";
         // WHEN, THEN
-        Exception exception = assertThrows(BeyondExpirationException.class, () -> userBalanceService.calculateUserBalance(item));
+        Exception exception = assertThrows(BeyondExpirationException.class, () -> userBalanceService.calculateBalance(item));
         String actualMessage = exception.getMessage();
         assertTrue(actualMessage.contains(expectedMessage));
         assertEquals(expectedBalance, john.getBalance());
 
     }
+
 
 }

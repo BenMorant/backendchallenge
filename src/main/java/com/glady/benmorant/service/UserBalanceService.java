@@ -25,7 +25,7 @@ public class UserBalanceService {
         this.clock = clock;
     }
 
-    public void calculateUserBalance(Item item) {
+    public void calculateBalance(Item item) {
         if (item.getExpirationDate().isAfter(LocalDate.now(clock))) {
             user.setBalance(user.getBalance() + item.getAmount());
         } else {

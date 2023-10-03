@@ -36,7 +36,7 @@ class BackendChallengeIntegrationTests {
         userBalanceService = new UserBalanceService(user, mockedNow);
         // WHEN
         depositDistributionService.distribute(List.of(item));
-        userBalanceService.calculateUserBalance(item);
+        userBalanceService.calculateBalance(item);
 
         String actualOutput = user.getName() + " receives a " + item.getItemType().getName() + " distribution with the amount of $" + item.getAmount() + " from " + company.getName() + ". He will therefore have $" + user.getBalance() + " in gift cards in his account. He received it on " + dtf.format(item.getDistributionDate()) + ". The gift distribution will expire on " + dtf.format(item.getExpirationDate()) + ".";
         // THEN
@@ -60,7 +60,7 @@ class BackendChallengeIntegrationTests {
         userBalanceService = new UserBalanceService(user, mockedNow);
         // WHEN
         depositDistributionService.distribute(List.of(item));
-        userBalanceService.calculateUserBalance(item);
+        userBalanceService.calculateBalance(item);
         String actualOutput = user.getName() + " receives a " + item.getItemType().getName() + " distribution from " + company.getName() + " with the amount of $" + item.getAmount() + " on " + dtf.format(item.getDistributionDate()) + ", the distribution ends on " + dtf.format(item.getExpirationDate()) + ".";
         // THEN
         assertEquals(expectedOutput, actualOutput);
@@ -85,7 +85,7 @@ class BackendChallengeIntegrationTests {
         userBalanceService = new UserBalanceService(user, mockedNow);
         // WHEN
         depositDistributionService.distribute(List.of(item));
-        userBalanceService.calculateUserBalance(item);
+        userBalanceService.calculateBalance(item);
         String actualOutput = user.getName() + " receives a " + item.getItemType().getName() + " distribution from " + company.getName() + " with the amount of $" + item.getAmount() + " on " + dtf.format(item.getDistributionDate()) + ", the distribution ends on " + dtf.format(item.getExpirationDate()) + ".";
         // THEN
         assertEquals(expectedOutput, actualOutput);
