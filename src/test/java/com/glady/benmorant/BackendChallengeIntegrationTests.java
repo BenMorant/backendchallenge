@@ -43,13 +43,32 @@ public class BackendChallengeIntegrationTests {
         long expectedBalance = 50L;
         LocalDate distributionDate = LocalDate.of(2020, Month.JANUARY, 1);
         Item item = new Meal(50L, distributionDate);
-        // Todo : expiration date to calculate. Caution with leap years !
-        LocalDate expirationDate = LocalDate.of(2021, Month.FEBRUARY, 28);
         Company company = new Company("Apple", 200L);
         depositDistributionService = new DepositDistributionService(company, user);
         // WHEN
         depositDistributionService.distribute(item);
-        String actualOutput = user.getName() + " receives a " + item.getItemType().getName() + " distribution from " + company.getName() + " with the amount of $" + item.getAmount() + " on " + dtf.format(item.getDistributionDate()) + ", the distribution ends on " + dtf.format(expirationDate) + ".";
+        String actualOutput = user.getName() + " receives a " + item.getItemType().getName() + " distribution from " + company.getName() + " with the amount of $" + item.getAmount() + " on " + dtf.format(item.getDistributionDate()) + ", the distribution ends on " + dtf.format(item.getExpirationDate()) + ".";
+        // THEN
+        assertEquals(expectedOutput, actualOutput);
+        assertEquals(expectedBalance, newBalance);
+
+    }
+
+    @Test
+    void should_give_the_correct_output_for_meal_and_the_correct_user_balance_when_now_is_before_the_expiration_date_and_when_leap_year() {
+        // GIVEN
+        String expectedOutput = "Jessica receives a Meal distribution from Apple with the amount of $50 on 01/01/2023, the distribution ends on 02/29/2024.";
+        User user = new User("Jessica", 0L);
+        // Todo : new balance to calculate
+        long newBalance = 50L;
+        long expectedBalance = 50L;
+        LocalDate distributionDate = LocalDate.of(2023, Month.JANUARY, 1);
+        Item item = new Meal(50L, distributionDate);
+        Company company = new Company("Apple", 200L);
+        depositDistributionService = new DepositDistributionService(company, user);
+        // WHEN
+        depositDistributionService.distribute(item);
+        String actualOutput = user.getName() + " receives a " + item.getItemType().getName() + " distribution from " + company.getName() + " with the amount of $" + item.getAmount() + " on " + dtf.format(item.getDistributionDate()) + ", the distribution ends on " + dtf.format(item.getExpirationDate()) + ".";
         // THEN
         assertEquals(expectedOutput, actualOutput);
         assertEquals(expectedBalance, newBalance);

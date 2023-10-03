@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Gift extends Item {
 
-    private final static int LIFESPAN_IN_COMPLETE_DAYS = 364;
+    private final static long LIFESPAN_IN_COMPLETE_DAYS = 364L;
 
 
     public Gift(long amount, LocalDate distributionDate) {
