@@ -1,6 +1,5 @@
 package com.glady.benmorant.service;
 
-import com.glady.benmorant.exception.BeyondExpirationException;
 import com.glady.benmorant.model.Item;
 import com.glady.benmorant.model.User;
 
@@ -25,12 +24,12 @@ public class UserBalanceService {
         this.clock = clock;
     }
 
-    public void calculateBalance(Item item) {
-        if (item.getExpirationDate().isAfter(LocalDate.now(clock))) {
-            user.setBalance(user.getBalance() + item.getAmount());
-        } else {
-            throw new BeyondExpirationException("This deposit is beyond expiration. The " + item.getItemType().getName() + " amount ($" + item.getAmount() + ") hasn't been counted in " + user.getName() + "'s balance.");
+    public void calculateBalance() {
+        for (Item item : user.getItems()) {
+            if (item.getExpirationDate().isAfter(LocalDate.now(clock))) {
+                user.setBalance(user.getBalance() + item.getAmount());
+            }
         }
-
     }
+
 }

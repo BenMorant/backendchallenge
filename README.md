@@ -3,6 +3,7 @@
 ## Description
 
 contains an application implementing :
+
 - a service that allows companies to distribute gift and meal deposits to a user if the company balance allows it.
 - a service that calculate the user balance
 
