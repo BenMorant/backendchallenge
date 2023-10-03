@@ -1,7 +1,6 @@
 package com.glady.benmorant.model;
 
 import java.time.LocalDate;
-import java.util.List;
 
 public class Gift extends Item {
 

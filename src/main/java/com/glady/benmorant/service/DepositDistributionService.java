@@ -3,14 +3,12 @@ package com.glady.benmorant.service;
 import com.glady.benmorant.exception.NotEnoughBalanceException;
 import com.glady.benmorant.model.Company;
 import com.glady.benmorant.model.Item;
-import com.glady.benmorant.model.User;
 
 import java.util.List;
 
 public class DepositDistributionService {
 
     private final Company company;
-
 
 
     public DepositDistributionService(Company company) {
@@ -25,7 +23,7 @@ public class DepositDistributionService {
                 company.setBalance(newCompanyBalance);
                 item.getDestinationUsers().forEach(user -> user.addItem(item));
             } else {
-                throw new NotEnoughBalanceException(company.getName() + " has not enough balance.");
+                throw new NotEnoughBalanceException(company.getName() + " has not enough balance for this distribution.");
             }
         });
     }

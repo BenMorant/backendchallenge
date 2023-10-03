@@ -31,7 +31,7 @@ class DepositDistributionServiceTest {
     }
 
     @Test
-    void should_throw_notEnoughBalanceException_when_item_amount_bigger_than_company_balance() {
+    void should_throw_NotEnoughBalanceException_when_item_amount_bigger_than_company_balance() {
         // GIVEN
         LocalDate distributionDate = LocalDate.now();
         User john = new User("John");
@@ -39,7 +39,7 @@ class DepositDistributionServiceTest {
         item.addUsers(List.of(john));
         Company tesla = new Company("Tesla", 50L);
         depositDistributionService = new DepositDistributionService(tesla);
-        String expectedMessage = "Tesla has not enough balance.";
+        String expectedMessage = "Tesla has not enough balance for this distribution.";
         // WHEN, THEN
         Exception exception = assertThrows(NotEnoughBalanceException.class, () -> depositDistributionService.distribute(List.of(item)));
         String actualMessage = exception.getMessage();

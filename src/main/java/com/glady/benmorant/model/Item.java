@@ -11,11 +11,8 @@ public abstract class Item {
     private final LocalDate distributionDate;
 
     private final ItemType itemType;
-
-    private List<User> destinationUsers = new ArrayList<>();
-
-
     protected LocalDate expirationDate;
+    private List<User> destinationUsers = new ArrayList<>();
 
     public Item(long amount, LocalDate distributionDate, ItemType itemType) {
         this.amount = amount;

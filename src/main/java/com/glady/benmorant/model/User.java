@@ -12,7 +12,6 @@ public class User {
     private List<Item> userItems = new ArrayList<>();
 
 
-
     public User(String name) {
         this.name = name;
     }
@@ -20,7 +19,6 @@ public class User {
     public String getName() {
         return name;
     }
-
 
 
     public long getBalance() {
