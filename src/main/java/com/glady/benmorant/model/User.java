@@ -4,10 +4,11 @@ public class User {
 
     private String name;
 
-    private Long balance;
+    private long balance;
 
-    public User(String name) {
+    public User(String name, long balance) {
         this.name = name;
+        this.balance = balance;
     }
 
     public String getName() {
@@ -18,11 +19,11 @@ public class User {
         this.name = name;
     }
 
-    public Long getBalance() {
+    public long getBalance() {
         return balance;
     }
 
-    public void setBalance(Long balance) {
+    public void setBalance(long balance) {
         this.balance = balance;
     }
 }

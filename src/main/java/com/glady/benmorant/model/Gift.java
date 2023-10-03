@@ -4,20 +4,20 @@ import java.time.LocalDate;
 
 public class Gift {
 
-    private Long amount;
+    private long amount;
 
     private LocalDate distributionDate;
 
-    public Gift(Long amount, LocalDate distributionDate) {
+    public Gift(long amount, LocalDate distributionDate) {
         this.amount = amount;
         this.distributionDate = distributionDate;
     }
 
-    public Long getAmount() {
+    public long getAmount() {
         return amount;
     }
 
-    public void setAmount(Long amount) {
+    public void setAmount(long amount) {
         this.amount = amount;
     }
 

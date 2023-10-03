@@ -4,7 +4,7 @@ public class Company {
 
     final private String name;
 
-    private Long balance;
+    private long balance;
 
     public Company(String name, Long balance) {
         this.name = name;
@@ -15,11 +15,11 @@ public class Company {
         return name;
     }
 
-    public Long getBalance() {
+    public long getBalance() {
         return balance;
     }
 
-    public void setBalance(Long balance) {
+    public void setBalance(long balance) {
         this.balance = balance;
     }
 }
