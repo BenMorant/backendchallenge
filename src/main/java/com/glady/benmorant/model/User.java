@@ -6,10 +6,8 @@ import java.util.List;
 public class User {
 
     private final String name;
-
+    private final List<Item> items = new ArrayList<>();
     private long balance;
-
-    private List<Item> userItems = new ArrayList<>();
 
 
     public User(String name) {
@@ -29,15 +27,12 @@ public class User {
         this.balance = balance;
     }
 
-    public List<Item> getUserItems() {
-        return userItems;
+    public List<Item> getItems() {
+        return items;
     }
 
-    public void setUserItems(List<Item> userItems) {
-        this.userItems = userItems;
-    }
 
     public void addItem(Item item) {
-        userItems.add(item);
+        items.add(item);
     }
 }

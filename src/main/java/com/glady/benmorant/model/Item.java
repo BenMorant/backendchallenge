@@ -40,10 +40,6 @@ public abstract class Item {
         return destinationUsers;
     }
 
-    public void setDestinationUsers(List<User> destinationUsers) {
-        this.destinationUsers = destinationUsers;
-    }
-
     public void addUsers(List<User> users) {
         destinationUsers.addAll(users);
     }

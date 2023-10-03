@@ -26,7 +26,7 @@ class DepositDistributionServiceTest {
         depositDistributionService.distribute(List.of(item));
         // THEN
         assertEquals(100L, tesla.getBalance());
-        assertEquals(1, john.getUserItems().size());
+        assertEquals(1, john.getItems().size());
 
     }
 
