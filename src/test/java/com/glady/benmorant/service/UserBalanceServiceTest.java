@@ -20,10 +20,10 @@ class UserBalanceServiceTest {
         // GIVEN
         User john = new User("John");
         Item item = new Gift(100L, LocalDate.now());
-        long expectedBalance = 0L;
-        userBalanceService = new UserBalanceService();
+        long expectedBalance = 100L;
+        userBalanceService = new UserBalanceService(john);
         // WHEN
-        long actualBalance = userBalanceService.calculateUserBalance();
+        long actualBalance = userBalanceService.calculateUserBalance(item);
         // THEN
         assertEquals(expectedBalance, actualBalance);
     }
